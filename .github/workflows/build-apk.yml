@@ -1,4 +1,4 @@
-name: Build Digital Clock APK
+name: Build Android Clock APK
 
 on:
   workflow_dispatch:
@@ -21,13 +21,14 @@ jobs:
           java-version: '17'
 
       - name: Make Gradle executable
-        run: chmod +x gradlew
+        run: chmod +x Digital-Clock-APK-Ready/Digital-Clock-APK-Ready/gradlew
 
       - name: Build APK
+        working-directory: Digital-Clock-APK-Ready/Digital-Clock-APK-Ready
         run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Digital-Clock-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: Digital-Clock-APK-Ready/Digital-Clock-APK-Ready/app/build/outputs/apk/debug/app-debug.apk
